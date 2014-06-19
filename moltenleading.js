@@ -1,3 +1,6 @@
+/*! Molten Leading, vanilla JS version, v1.0
+ * https://github.com/viljamis/Molten-Leading
+ */
 (function (window, document, undefined) {
 
   "use strict";
