@@ -11,25 +11,25 @@ Following the steps below you should be able to get everything up and running.
 
 1. Link files:
 ```html
-	<script src="moltenleading.js"></script>
+<script src="moltenleading.js"></script>
 ```
 
 2. Hook up the plugin:
 ```html
 <!-- Put this right before the </body> closing tag -->
-	<script>
-		moltenLeading("h1");
-	</script>
+<script>
+  moltenLeading("h1");
+</script>
 ```
 
 4. Customizable options:
 ```javascript
-	moltenLeading("h1", {
-   minline: 1.2,  // Minimum line height
-   maxline: 1.8,  // Maximum line height
-   minwidth: 320, // Minimum element width where the adjustment starts
-   maxwidth: 1024 // Maximum element width where the adjustment stops
- });
+moltenLeading("h1", {
+  minline: 1.2,  // Minimum line height
+  maxline: 1.8,  // Maximum line height
+  minwidth: 320, // Minimum element width where the adjustment starts
+  maxwidth: 1024 // Maximum element width where the adjustment stops
+});
 ```
 
 
