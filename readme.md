@@ -36,5 +36,5 @@ moltenLeading("h1", {
 ## Notes:
 * Tested to be working all the way down to IE6. side note: if you need to support IE6 & 7 you’re gonna have to use "tag selectors", since the plugin uses getElementsByTagName as a fallback if querySelector isn’t supported.
 * Built Progressive Enhancement in mind, so the plugin will silently fail when a browser doesn’t support certain selector (looking at IE6 & 7).
-* There’s a demo <a href="http://wilto.github.com/Molten-Leading/">right hurr</a>.
-* Full credits go to both <a href="http://twitter.com/nicewebtype">Wilto</a> who wrote the orinal plugin and to <a href="http://twitter.com/nicewebtype">Tim Brown</a> for <a href="http://nicewebtype.com/notes/2012/02/03/molten-leading-or-fluid-line-height/">the original idea</a>.
+* There’s a demo <a href="http://viljamis.com/molten-leading/">here</a>.
+* Full credits go to both <a href="http://twitter.com/wilto">Wilto</a> who wrote the orinal plugin and to <a href="http://twitter.com/nicewebtype">Tim Brown</a> for <a href="http://nicewebtype.com/notes/2012/02/03/molten-leading-or-fluid-line-height/">the original idea</a>.
