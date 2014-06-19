@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Molten Leading for IE6+7</title>
+		<style type="text/css" media="screen">
+			body { -webkit-text-size-adjust: none; }
+			div {
+				width: 98%;
+				margin: 0 auto;
+			}
+			h1 { font-size: 1.6em; }
+			p { font-size: 1.125em; }
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>Mauris vel neque sit amet nunc gravida congue sed sit amet purus vel neque sit amet nunc gravida congue sed sit amet purus</h1>
+
+			<p>Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec.</p>
+
+		</div>
+
+		<script src="moltenleading.js"></script>
+		<script>
+			moltenLeading("h1", {
+				minline: 1.0,
+				maxline: 1.5,
+				minwidth: 320,
+				maxwidth: 768
+			});
+
+			moltenLeading("p", {
+				minline: 1.2,
+				maxline: 1.8
+			});
+
+
+		</script>
+	</body>
+</html>
