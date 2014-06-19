@@ -1,4 +1,4 @@
-# Molten Leading (Vanilla JavaScript version)
+# Molten Leading (Vanilla JS version)
 
 Manually adjusting ```line-height``` for optimum readability across a bunch of media queries is kind of a pain. With Molten Leading you can set a minimum width at which the adjustment starts, a maximum element width where it stops, and a minimum and maximum line height to adjust through.
 
