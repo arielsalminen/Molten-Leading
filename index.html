@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Molten Leading &middot; Vanilla JavaScript version</title>
     <script src="moltenleading.js"></script>
     <style>
-      body { -webkit-text-size-adjust: none; }
+      body {
+        -webkit-text-size-adjust: none;
+      }
       div {
-        width: 98%;
+        width: 90%;
+        max-width: 70em;
         margin: 0 auto;
       }
-      h1 { font-size: 1.6em; }
-      .lead { font-size: 1.1em; }
-      p { font-size: .95em; }
-      @media ( min-width: 600px ) {
+      .col {
+        width: 100%;
+      }
+      h1 {
+        font-size: 1.6em;
+      }
+      .lead {
+        font-size: 1.1em;
+      }
+      p {
+        font-size: .95em;
+      }
+      @media (min-width: 600px) {
         .col-a {
           width: 75%;
           float: left;
@@ -29,17 +41,13 @@
   <body>
     <div>
       <h1>Mauris vel neque sit amet nunc gravida congue sed sit amet purus vel neque sit amet nunc gravida congue sed sit amet purus</h1>
-
       <p class="lead">Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec.</p>
-
       <div class="col col-a">
         <p>Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec.</p>
       </div>
-
       <div class="col col-b">
         <p>Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit.</p>
       </div>
-
     </div>
 
     <script>
@@ -61,7 +69,6 @@
         minwidth: 400,
         maxwidth: 768
       });
-
     </script>
   </body>
 </html>

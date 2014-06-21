@@ -6,24 +6,30 @@
     <title>Molten Leading for IE6+7</title>
     <script src="moltenleading.js"></script>
     <style>
-      body { -webkit-text-size-adjust: none; }
+      body {
+        -webkit-text-size-adjust: none;
+      }
       div {
-        width: 98%;
+        width: 90%;
+        max-width: 70em;
         margin: 0 auto;
       }
-      h1 { font-size: 1.6em; }
-      p { font-size: 1.125em; }
+      h1 {
+        font-size: 1.6em;
+      }
+      p {
+        font-size: 1.125em;
+      }
     </style>
   </head>
   <body>
     <div>
       <h1>Mauris vel neque sit amet nunc gravida congue sed sit amet purus vel neque sit amet nunc gravida congue sed sit amet purus</h1>
-
       <p>Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus. Quisque lacus quam, egestas ac tincidunt a, lacinia vel velit. Aenean facilisis nulla vitae urna tincidunt congue sed ut dui. Morbi malesuada nulla nec.</p>
-
     </div>
 
     <script>
+      // For IE6 and 7 compatibility use simple tag selectors:
       moltenLeading("h1", {
         minline: 1.0,
         maxline: 1.5,
@@ -35,8 +41,6 @@
         minline: 1.2,
         maxline: 1.8
       });
-
-
     </script>
   </body>
 </html>
