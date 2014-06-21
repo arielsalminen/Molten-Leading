@@ -1,4 +1,4 @@
-# Molten Leading (plain JavaScript version)
+# Molten Leading (plain JS version)
 
 Manually adjusting ```line-height``` for optimum readability across a bunch of media queries is kind of a pain. With Molten Leading you can set a minimum width at which the adjustment starts, a maximum element width where it stops, and a minimum and maximum line height to adjust through.
 
@@ -10,7 +10,7 @@ All the work here is based on [@Wilto’s Molten-Leading](https://github.com/Wil
 * Works in all major desktop and mobile browsers, including IE 6 and up.
 * Free to use in both commercial and non-commercial projects.
 * Doesn’t require external JavaScript libraries.
-* Weighs under 1kb minified and Gzip’ed.
+* Weighs only 817 bytes minified and Gzip’ed.
 * Supports multiple instances.
 
 
@@ -52,4 +52,5 @@ moltenLeading("h1", {
 ## Changelog
 
 `1.01` (2014-06-21) - Removes unnecessary code.
-`1.00` (2014-06-19) - Release.
+
+`1.00` (2014-06-19) - First release.
