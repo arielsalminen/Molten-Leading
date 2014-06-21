@@ -51,6 +51,8 @@ moltenLeading("h1", {
 
 ## Changelog
 
+`1.02` (2014-06-21) - Adds minified version.
+
 `1.01` (2014-06-21) - Removes unnecessary code.
 
 `1.00` (2014-06-19) - First release.
