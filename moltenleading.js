@@ -127,7 +127,7 @@
       func.apply(context, arguments);
     },
 
-    /*
+    /**
     * Handles events in a way that they work in all browsers
     *
     * fn arg can be an object or a function, thanks to handleEvent
