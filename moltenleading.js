@@ -6,6 +6,14 @@
 
   "use strict";
 
+  function addEventListener(event, listener) {
+    if ("addEventListener" in window) {
+      window.addEventListener("resize", listener, false);
+    } else if ("attachEvent" in window) {
+      window.attachEvent("on" + event, listener);
+    }
+  }
+
   /**
    * The MoltenLeading object
    *
@@ -55,15 +63,12 @@
      * @function
      */
     init : function () {
-      this.forEach(this.elements, this.hotlead, this);
       var self = this;
+      this.resize();
+      addEventListener("resize", this.debounce(onResize, this.options.threshold));
 
-      if ("addEventListener" in window) {
-        window.addEventListener("resize", this, false);
-      } else if ("attachEvent" in window) {
-        window.attachEvent("onresize", function () {
-          self.handleEvent.call(self);
-        });
+      function onResize(e) {
+        self.resize(e);
       }
     },
 
@@ -94,17 +99,7 @@
      * @function
      */
     resize : function () {
-      this.debounce(this.forEach(this.elements, this.hotlead, this), this.options.threshold);
-    },
-
-    /**
-    * Handling the events
-    *
-    * @param  {event} event
-    * @return {function} Returns appropriate function to be used with the event
-    */
-    handleEvent : function () {
-      this.resize();
+      this.forEach(this.elements, this.hotlead, this);
     },
 
     /**
