@@ -6,14 +6,6 @@
 
   "use strict";
 
-  function addEventListener(event, listener) {
-    if ("addEventListener" in window) {
-      window.addEventListener("resize", listener, false);
-    } else if ("attachEvent" in window) {
-      window.attachEvent("on" + event, listener);
-    }
-  }
-
   /**
    * The MoltenLeading object
    *
@@ -22,12 +14,8 @@
    * @constructor
    */
   function MoltenLeading(selector, options) {
-    if (!selector) {
-      throw new Error("No selector supplied for Molten Leading");
-    }
-
     this.selector = selector;
-    this.options = this.extend({}, MoltenLeading.defaultOptions, options);
+    this.options = this._extend({}, MoltenLeading.defaultOptions, options);
 
     // If querySelector is supported, use that
     if ("querySelector" in document && document.querySelector(this.selector)) {
@@ -36,10 +24,6 @@
     // If querySelector is not supported, use getElementsByTagName (for IE7 & 6)
     } else if (document.getElementsByTagName(this.selector)) {
       this.elements = document.getElementsByTagName(this.selector);
-
-    // If element doesn't exists at all, give error
-    } else {
-      throw new Error("The element you are trying to select doesn't exist");
     }
   }
 
@@ -47,11 +31,11 @@
    * Default options
    */
   MoltenLeading.defaultOptions = {
-    minline: 1.2,    // Minimum line-height for the element
-    maxline: 1.8,    // Maximum line-height for the element
-    minwidth: 320,   // Minimum element width where the adjustment starts
-    maxwidth: 1024,  // Maximum element width where the adjustment stops
-    threshold: 50    // Threshold time used on window resize, in milliseconds
+    minline: 1.2,    // Minimum line-height for the element, numbers (multiplied by the element's font-size)
+    maxline: 1.8,    // Maximum line-height for the element, numbers (multiplied by the element's font-size)
+    minwidth: 320,   // Minimum element width where the adjustment starts, pixels
+    maxwidth: 1024,  // Maximum element width where the adjustment stops, pixels
+    threshold: 100   // Threshold time used on window resize, milliseconds
   };
 
   MoltenLeading.prototype = {
@@ -63,12 +47,12 @@
      * @function
      */
     init : function () {
-      var self = this;
       this.resize();
-      addEventListener("resize", this.debounce(onResize, this.options.threshold));
+      this._addEventListener("resize", this._debounce(onResize, this.options.threshold));
 
-      function onResize(e) {
-        self.resize(e);
+      var self = this;
+      function onResize(event) {
+        self.resize(event);
       }
     },
 
@@ -80,14 +64,14 @@
     * @return {string} the calculated leading for the element
     */
     hotlead : function (i, el) {
-      var o = this.options;
-      var widthperc = parseInt((el.offsetWidth - o.minwidth) / (o.maxwidth - o.minwidth) * 100, 10);
-      var linecalc = o.minline + (o.maxline - o.minline) * widthperc / 100;
+      var elwidth = el.offsetWidth;
+      var widthperc = parseInt((elwidth - this.options.minwidth) / (this.options.maxwidth - this.options.minwidth) * 100, 10);
+      var linecalc = this.options.minline + (this.options.maxline - this.options.minline) * widthperc / 100;
 
-      if (widthperc <= 0 || linecalc < o.minline) {
-        linecalc = o.minline;
-      } else if (widthperc >= 100 || linecalc > o.maxline) {
-        linecalc = o.maxline;
+      if (widthperc <= 0 || linecalc < this.options.minline) {
+        linecalc = this.options.minline;
+      } else if (widthperc >= 100 || linecalc > this.options.maxline) {
+        linecalc = this.options.maxline;
       }
 
       el.style.lineHeight = linecalc;
@@ -99,20 +83,24 @@
      * @function
      */
     resize : function () {
-      this.forEach(this.elements, this.hotlead, this);
+      this._forEach(this.elements, this.hotlead, this);
     },
 
     /**
     * Merge object into target
     *
+    * Using copy of the array and item in for loop is FAST:
+    * http://jsperf.com/caching-array-length/47
+    *
     * @param {target} the object for other objects to be merged into
     * @returns {Object} the merged object (a reference to target)
     */
-    extend : function (target) {
+    _extend : function (target) {
       var args = arguments;
+      var copyOfArray = [];
 
-      for (var i = 1; i < args.length; i++) {
-        var source = args[i];
+      for (var i = 0, item; item = args[i]; i++) {
+        var source = copyOfArray[i] = item;
         for (var property in source) {
           if (source.hasOwnProperty(property)) {
             target[property] = source[property];
@@ -130,9 +118,10 @@
      * @param  {function} callback function
      * @param  {object} scope
      */
-    forEach : function (array, callback, scope) {
-      for (var i = 0; i < array.length; i++) {
-        callback.call(scope, i, array[i]);
+    _forEach : function (array, callback, scope) {
+      var copyOfArray = [];
+      for (var i = 0, item; item = array[i]; i++) {
+        callback.call(scope, i, copyOfArray[i] = item);
       }
     },
 
@@ -144,7 +133,7 @@
      * @param  {function} callback function
      * @param  {integer} milliseconds to wait
      */
-    debounce : function (func, wait) {
+    _debounce : function (func, wait) {
       var timeout;
       return function () {
         var context = this, args = arguments;
@@ -154,6 +143,20 @@
           func.apply(context, args);
         }, wait);
       };
+    },
+
+    /**
+     * Adds event listeners
+     *
+     * @param  {event} the event to be added
+     * @param  {function} the function that will be executed
+     */
+    _addEventListener : function (event, listener) {
+      if ("addEventListener" in window) {
+        window.addEventListener("resize", listener, false);
+      } else if ("attachEvent" in window) {
+        window.attachEvent("on" + event, listener);
+      }
     }
 
   };
