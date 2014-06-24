@@ -10,7 +10,7 @@ All the work here is based on [@Wilto’s Molten-Leading](https://github.com/Wil
 * Works in all major desktop and mobile browsers, including IE 6 and up.
 * Free to use in both commercial and non-commercial projects.
 * Doesn’t require external JavaScript libraries.
-* Weighs only 750 bytes minified and Gzip’ed.
+* Weighs only 689 bytes minified and Gzip’ed.
 * Supports multiple instances.
 
 
@@ -34,25 +34,34 @@ Following the steps below you should be able to get everything up and running.
 4. Customizable options:
 ```javascript
 moltenLeading("h1", {
-  minline: 1.2,    // Minimum line height for the element
-  maxline: 1.8,    // Maximum line height for the element
-  minwidth: 320,   // Minimum element width where the adjustment starts
-  maxwidth: 1024,  // Maximum element width where the adjustment stops
-  threshold: 33.4  // Threshold time used on window resize, in milliseconds
+  minline: 1.2,    // Minimum line-height for the element, numbers (multiplied by the element's font-size)
+  maxline: 1.8,    // Maximum line-height for the element, numbers (multiplied by the element's font-size)
+  minwidth: 320,   // Minimum element width where the adjustment starts, pixels
+  maxwidth: 1024,  // Maximum element width where the adjustment stops, pixels
+  threshold: 100   // Threshold time used on window resize, milliseconds
 });
 ```
 
 
-## Notes:
+## Notes
+
 * Tested to be working all the way down to IE6. side note: if you need to support IE6 & 7 you’re gonna have to use simple "tag selectors," since the plugin uses getElementsByTagName as a fallback if querySelector isn’t supported.
-* Built Progressive Enhancement in mind, so the plugin will silently fail when a browser doesn’t support certain selector (only IE6 & 7).
+* Built progressive enhancement in mind, so the plugin will silently fail when a browser doesn’t support certain selector (only IE6 & 7).
 * There’s <a href="http://viljamis.com/molten-leading/">a demo here</a>.
 * Full credits go to both <a href="http://twitter.com/wilto">Wilto</a> who wrote the orinal plugin and to <a href="http://twitter.com/nicewebtype">Tim Brown</a> for <a href="http://nicewebtype.com/notes/2012/02/03/molten-leading-or-fluid-line-height/">the original idea</a>.
 
 
+## Running on localhost
+
+1. Clone this repo by running ```git clone git@github.com:viljamis/Molten-Leading.git```
+2. If you’re using Mac OS X, open the "Molten-Leading" folder and run ```python -m SimpleHTTPServer 8000```
+3. Done! Now view the project at [http://localhost:8000](http://localhost:8000)
+
+
+
 ## Changelog
 
-`1.03` (2014-06-23) - Fixes debouncing of events and optimizes performance (adds also an option to control the debounce timing).
+`1.03` (2014-06-24) - Fixes debouncing of events and optimizes performance (adds also an option to control the debounce timing).
 
 `1.02` (2014-06-21) - Adds minified version.
 
