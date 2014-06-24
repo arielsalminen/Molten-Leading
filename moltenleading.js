@@ -1,5 +1,5 @@
 /*!
- * Molten Leading, plain JavaScript version, v1.02
+ * Molten Leading, plain JavaScript version, v1.03
  * https://github.com/viljamis/Molten-Leading
  */
 (function (window, document, undefined) {
@@ -39,10 +39,11 @@
    * Default options
    */
   MoltenLeading.defaultOptions = {
-    minline: 1.2,   // Minimum line-height for the element
-    maxline: 1.8,   // Maximum line-height for the element
-    minwidth: 320,  // Minimum element width where the adjustment starts
-    maxwidth: 1024  // Maximum element width where the adjustment stops
+    minline: 1.2,    // Minimum line-height for the element
+    maxline: 1.8,    // Maximum line-height for the element
+    minwidth: 320,   // Minimum element width where the adjustment starts
+    maxwidth: 1024,  // Maximum element width where the adjustment stops
+    threshold: 50    // Threshold time used on window resize, in milliseconds
   };
 
   MoltenLeading.prototype = {
@@ -55,7 +56,15 @@
      */
     init : function () {
       this.forEach(this.elements, this.hotlead, this);
-      this.addEvent(window, "resize", this, false);
+      var self = this;
+
+      if ("addEventListener" in window) {
+        window.addEventListener("resize", this, false);
+      } else if ("attachEvent" in window) {
+        window.attachEvent("onresize", function () {
+          self.handleEvent.call(self);
+        });
+      }
     },
 
     /**
@@ -85,9 +94,17 @@
      * @function
      */
     resize : function () {
-      this.debounce(function () {
-        this.forEach(this.elements, this.hotlead, this);
-      }, 100);
+      this.debounce(this.forEach(this.elements, this.hotlead, this), this.options.threshold);
+    },
+
+    /**
+    * Handling the events
+    *
+    * @param  {event} event
+    * @return {function} Returns appropriate function to be used with the event
+    */
+    handleEvent : function () {
+      this.resize();
     },
 
     /**
@@ -112,65 +129,6 @@
     },
 
     /**
-    * Debounce returns a function, that, as long as it continues to be invoked,
-    * will not be triggered. The function will be called after it stops being
-    * called for N milliseconds.
-    */
-    debounce : function (func, wait) {
-      var timeout;
-      var context = this;
-      var later = function () {
-        timeout = null;
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      func.apply(context, arguments);
-    },
-
-    /**
-    * Handles events in a way that they work in all browsers
-    *
-    * fn arg can be an object or a function, thanks to handleEvent
-    * read more at: http://www.thecssninja.com/javascript/handleevent
-    *
-    * @param	{Element} the element to add the eventListener for
-    * @param	{string}  the eventListener which should be added
-    * @param	{string}	the context that should be passed
-    * @param	{boolean} event bubbling, true or false
-    */
-    addEvent : function (el, evt, fn, bubble) {
-      if ("addEventListener" in el) {
-        try {
-          el.addEventListener(evt, fn, bubble);
-
-        // BBOS6 doesn't support handleEvent, catch and polyfill
-        } catch (e) {
-          if (typeof fn === "object" && fn.handleEvent) {
-            el.addEventListener(evt, function (e) {
-
-              // Bind fn as this and set first arg as event object
-              fn.handleEvent.call(fn, e);
-            }, bubble);
-          } else {
-            throw e;
-          }
-        }
-      } else if ("attachEvent" in el) {
-
-        // check if the callback is an object and contains handleEvent
-        if (typeof fn === "object" && fn.handleEvent) {
-          el.attachEvent("on" + evt, function () {
-
-            // Bind fn as this
-            fn.handleEvent.call(fn);
-          });
-        } else {
-          el.attachEvent("on" + evt, fn);
-        }
-      }
-    },
-
-    /**
      * forEach method
      *
      * @param  {array} array to loop through
@@ -184,19 +142,23 @@
     },
 
     /**
-    * Handling the events
-    *
-    * @param  {event} event
-    * @return {function} Returns appropriate function to be used with the event
-    */
-    handleEvent : function (event) {
-      var evt = event || window.event;
-
-      switch (evt.type) {
-      case "resize":
-        this.resize(evt);
-        break;
-      }
+     * Debounce returns a function, that, as long as it continues to be invoked,
+     * will not be triggered. The function will be called after it stops being
+     * called for N milliseconds.
+     *
+     * @param  {function} callback function
+     * @param  {integer} milliseconds to wait
+     */
+    debounce : function (func, wait) {
+    	var timeout;
+    	return function () {
+    		var context = this, args = arguments;
+    		clearTimeout(timeout);
+    		timeout = setTimeout(function () {
+    			timeout = null;
+    			func.apply(context, args);
+    		}, wait);
+    	};
     }
 
   };
