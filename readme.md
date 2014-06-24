@@ -10,7 +10,7 @@ All the work here is based on [@Wilto’s Molten-Leading](https://github.com/Wil
 * Works in all major desktop and mobile browsers, including IE 6 and up.
 * Free to use in both commercial and non-commercial projects.
 * Doesn’t require external JavaScript libraries.
-* Weighs only 817 bytes minified and Gzip’ed.
+* Weighs only 750 bytes minified and Gzip’ed.
 * Supports multiple instances.
 
 
@@ -34,10 +34,11 @@ Following the steps below you should be able to get everything up and running.
 4. Customizable options:
 ```javascript
 moltenLeading("h1", {
-  minline: 1.2,  // Minimum line height for the element
-  maxline: 1.8,  // Maximum line height for the element
-  minwidth: 320, // Minimum element width where the adjustment starts
-  maxwidth: 1024 // Maximum element width where the adjustment stops
+  minline: 1.2,    // Minimum line height for the element
+  maxline: 1.8,    // Maximum line height for the element
+  minwidth: 320,   // Minimum element width where the adjustment starts
+  maxwidth: 1024,  // Maximum element width where the adjustment stops
+  threshold: 33.4  // Threshold time used on window resize, in milliseconds
 });
 ```
 
@@ -50,6 +51,8 @@ moltenLeading("h1", {
 
 
 ## Changelog
+
+`1.03` (2014-06-23) - Fixes debouncing of events and optimizes performance (adds also an option to control the debounce timing).
 
 `1.02` (2014-06-21) - Adds minified version.
 
