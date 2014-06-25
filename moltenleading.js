@@ -162,10 +162,9 @@
      * Calls rAF if it hasn't been already called,
      * ensuring events don't get stacked
      *
-     * @param  {function} callback function
      * @private
      */
-    _requestTick : function (callback) {
+    _requestTick : function () {
       if (!this.ticking) {
         requestAnimFrame(this.update.bind(this));
         this.ticking = true;
