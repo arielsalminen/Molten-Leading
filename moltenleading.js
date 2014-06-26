@@ -201,6 +201,7 @@
   function expose(selector, options) {
     var mtl = new MoltenLeading(selector, options);
     mtl.init();
+    return mtl;
   }
   window.moltenLeading = expose;
 
