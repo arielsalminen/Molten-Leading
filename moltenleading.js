@@ -1,5 +1,5 @@
 /*!
- * Molten Leading, plain JavaScript version, v1.1
+ * Molten Leading, plain JavaScript version, v1.10
  * https://github.com/viljamis/Molten-Leading
  */
 (function (window, document, undefined) {
