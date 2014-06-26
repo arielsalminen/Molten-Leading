@@ -8,9 +8,10 @@ All the work here is based on [@Wilto’s Molten-Leading](https://github.com/Wil
 
 * Automatically adjust line-height based on element width for optimal readability.
 * Works in all major desktop and mobile browsers, including IE 6 and up.
+* Uses requestAnimationFrame for the best possible performance.
 * Free to use in both commercial and non-commercial projects.
 * Doesn’t require external JavaScript libraries.
-* Weighs only 836 bytes minified and Gzip’ed.
+* Weighs only 837 bytes minified and Gzip’ed.
 * Supports multiple instances.
 
 
@@ -41,6 +42,20 @@ moltenLeading("h1", {
 });
 ```
 
+## Public methods
+
+There’s currently one public method, ```update()```. This allows you to manually call Molten Leading’s update method that calculates and updates the CSS line-height of any specified element. Full example of the usage below:
+
+```javascript
+var myLeading = moltenLeading("h1", {
+  minline: 1.2,
+  maxline: 1.8
+});
+
+// Then somewhere later on:
+myLeading.update();
+```
+
 
 ## Notes
 
@@ -56,6 +71,23 @@ moltenLeading("h1", {
 2. If you’re using Mac OS X, open the "Molten-Leading" folder and run ```python -m SimpleHTTPServer 8000```
 3. Done! Now view the project at [http://localhost:8000](http://localhost:8000)
 
+
+## Tested on the following platforms
+
+* iOS 4.2.1+
+* Android 2.3+
+* Windows Phone 7.5+
+* Blackberry 7.0+
+* Blackberry Tablet 2.0+
+* Jolla
+* Firefox Phone
+* Kindle 3.3+
+* Symbian Belle
+* Symbian S40 Asha
+* webOS 2.0+
+* Windows XP
+* Windows 7
+* Mac OS X
 
 
 ## Changelog
