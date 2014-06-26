@@ -92,7 +92,7 @@ myLeading.update();
 
 ## Changelog
 
-`1.10` (2014-06-26) - Big performance improvements. Handles debouncing of events now via requestAnimationFrame, which removes the need for the previous threshold setting.
+`1.10` (2014-06-26) - Prformance improvements. Handles debouncing of events now via requestAnimationFrame, which removes the need for the previous threshold setting. Adds also public methods.
 
 `1.03` (2014-06-24) - Fixes debouncing of events and optimizes performance (adds also an option to control the debounce timing).
 
