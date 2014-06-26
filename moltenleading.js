@@ -130,7 +130,6 @@
     */
     _extend : function (target) {
       var args = arguments;
-      var copyOfArray = [];
 
       for (var i = 1; i < args.length; i++) {
         var source = args[i];
