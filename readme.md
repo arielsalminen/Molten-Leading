@@ -44,7 +44,7 @@ moltenLeading("h1", {
 
 ## Public methods
 
-There’s currently one public method, ```update()```. This allows you to manually call Molten Leading’s update method that calculates and updates the CSS line-height of any specified element. Full example of the usage below:
+There’s currently one public method, ```update()```. This allows you to manually call Molten Leading’s update method that calculates and updates the line-height of the specified element. Example of the usage:
 
 ```javascript
 var myLeading = moltenLeading("h1", {
