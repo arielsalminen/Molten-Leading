@@ -131,7 +131,7 @@
     _extend : function (target) {
       var args = arguments;
 
-      for (var i = 1; i < args.length; i++) {
+      for (var i = 1, len = args.length;  i < len; i++) {
         var source = args[i];
         for (var property in source) {
           if (source.hasOwnProperty(property)) {
@@ -152,7 +152,7 @@
      * @private
      */
     _forEach : function (array, callback, scope) {
-      for (var i = 0; i < array.length; i++) {
+      for (var i = 0, len = array.length; i < len; i++) {
         callback.call(scope, i, array[i]);
       }
     },
