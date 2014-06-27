@@ -65,6 +65,11 @@ myLeading.update();
 * Full credits go to both <a href="http://twitter.com/wilto">Wilto</a> who wrote the orinal plugin and to <a href="http://twitter.com/nicewebtype">Tim Brown</a> for <a href="http://nicewebtype.com/notes/2012/02/03/molten-leading-or-fluid-line-height/">the original idea</a>.
 
 
+## Possible performance bottlenecks
+
+* Don’t use CSS ```transition: all``` inside Molten Leading enabled containers, will make window.resize performance slower.
+
+
 ## Running on localhost
 
 1. Clone this repo by running ```git clone git@github.com:viljamis/Molten-Leading.git```
