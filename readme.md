@@ -44,7 +44,7 @@ moltenLeading("h1", {
   maxline: 1.8,    // Integer: Maximum line-height for the element (multiplied by the element's font-size)
   minwidth: 320,   // Integer: Minimum element width where the adjustment starts
   maxwidth: 768,   // Integer: Maximum element width where the adjustment stops
-  unit: "px"       // String: CSS unit used for the min & max widths, can be "px", "em" or "rem"
+  units: "px"      // String: CSS units used for the min & max widths, can be "px", "em" or "rem"
 });
 ```
 
