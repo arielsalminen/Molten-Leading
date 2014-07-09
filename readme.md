@@ -11,9 +11,14 @@ All the work here is based on [@Wilto’s Molten-Leading](https://github.com/Wil
 * Uses requestAnimationFrame for the best possible performance.
 * Free to use in both commercial and non-commercial projects.
 * Doesn’t require external JavaScript libraries.
-* Weighs only 837 bytes minified and Gzip’ed.
+* Supports "px", "em" and "rem" CSS units.
+* Weighs only 1.17Kb minified and Gzip’ed.
 * Supports multiple instances.
 
+
+## Demo
+
+* There’s <a href="http://viljamis.com/molten-leading/">a demo here</a>, try resizing your browser window.
 
 ## Usage instructions
 
@@ -35,16 +40,17 @@ Following the steps below you should be able to get everything up and running.
 4. Customizable options:
 ```javascript
 moltenLeading("h1", {
-  minline: 1.2,    // Minimum line-height for the element, number (multiplied by the element's font-size)
-  maxline: 1.8,    // Maximum line-height for the element, number (multiplied by the element's font-size)
-  minwidth: 320,   // Minimum element width where the adjustment starts, pixels
-  maxwidth: 1024   // Maximum element width where the adjustment stops, pixels
+  minline: 1.2,    // Integer: Minimum line-height for the element (multiplied by the element's font-size)
+  maxline: 1.8,    // Integer: Maximum line-height for the element (multiplied by the element's font-size)
+  minwidth: 320,   // Integer: Minimum element width where the adjustment starts
+  maxwidth: 768,   // Integer: Maximum element width where the adjustment stops
+  unit: "px"       // String: CSS unit used for the min & max widths, can be "px", "em" or "rem"
 });
 ```
 
 ## Public methods
 
-There’s currently one public method, ```update()```. This allows you to manually call Molten Leading’s update method that calculates and updates the line-height of the specified element. Example of the usage:
+There’s currently one public method, ```refresh()```. Refresh allows you to manually call Molten Leading’s update methods that calculate and update the line-height of specified element(s). Example of the usage:
 
 ```javascript
 var myLeading = moltenLeading("h1", {
@@ -53,7 +59,7 @@ var myLeading = moltenLeading("h1", {
 });
 
 // Then somewhere later on:
-myLeading.update();
+myLeading.refresh();
 ```
 
 
@@ -61,7 +67,8 @@ myLeading.update();
 
 * Tested to be working all the way down to IE6. side note: if you need to support IE6 & 7 you’re gonna have to use simple "tag selectors," since the plugin uses getElementsByTagName as a fallback if querySelector isn’t supported.
 * Built progressive enhancement in mind, so the plugin will silently fail when a browser doesn’t support certain selector (only IE6 & 7).
-* There’s <a href="http://viljamis.com/molten-leading/">a demo here</a>.
+* When using ```em``` units, keep in mind that ems are relative to the currently specified font-size of the parent element, so the width might not always be what you think it is.
+* The ```rem``` units are relative to the ```<html>``` element’s font-size instead, so they are a bit easier to grasp.
 * Full credits go to both <a href="http://twitter.com/wilto">Wilto</a> who wrote the orinal plugin and to <a href="http://twitter.com/nicewebtype">Tim Brown</a> for <a href="http://nicewebtype.com/notes/2012/02/03/molten-leading-or-fluid-line-height/">the original idea</a>.
 
 
@@ -96,6 +103,8 @@ myLeading.update();
 
 
 ## Changelog
+
+`1.20` (2014-07-09) - Adds support for ```px```, ```em``` and ```rem``` units in addition to performance optimization.
 
 `1.10` (2014-06-26) - Performance improvements. Handles debouncing of events now via requestAnimationFrame, which removes the need for the previous threshold setting. Adds also public methods.
 
