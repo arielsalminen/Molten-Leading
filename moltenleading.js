@@ -1,6 +1,6 @@
 /*!
  * Molten Leading, plain JavaScript version, v1.20
- * https://github.com/viljamis/Molten-Leading
+ * https://github.com/arielsalminen/Molten-Leading
  */
 (function (window, document, undefined) {
   "use strict";

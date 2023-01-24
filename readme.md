@@ -18,7 +18,7 @@ All the work here is based on [@Wilto’s Molten-Leading](https://github.com/Wil
 
 ## Demo
 
-* There’s <a href="http://viljamis.com/molten-leading/">a demo here</a>, try resizing your browser window.
+* There’s <a href="https://arie.ls/molten-leading/">a demo here</a>, try resizing your browser window.
 
 ## Usage instructions
 
@@ -79,7 +79,7 @@ myLeading.refresh();
 
 ## Running on localhost
 
-1. Clone this repo by running ```git clone git@github.com:viljamis/Molten-Leading.git```
+1. Clone this repo by running ```git clone git@github.com:arielsalminen/Molten-Leading.git```
 2. If you’re using Mac OS X, open the "Molten-Leading" folder and run ```python -m SimpleHTTPServer 8000```
 3. Done! Now view the project at [http://localhost:8000](http://localhost:8000)
 
